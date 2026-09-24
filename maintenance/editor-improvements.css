@@ -1,0 +1,49 @@
+/* Only the manuscript scrolls; all formatting controls retain their own space. */
+.app-shell.editor-active {
+  position: fixed;
+  inset: var(--editor-offset, 0px) 0 auto;
+  height: var(--editor-height, 100dvh);
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+.editor-active > .topbar, .editor-active > .offline-banner { flex-shrink: 0; }
+.editor-active > main { flex: 1; min-height: 0; }
+.editor-active .editor-page { height: 100%; min-height: 0; display: flex; flex-direction: column; }
+.editor-active .editor-top { position: relative; top: auto; flex-shrink: 0; }
+.editor-active .editor-layout { flex: 1; min-height: 0; overflow: hidden; }
+.editor-active .editor-workspace { height: 100%; min-height: 0; padding-bottom: 0; display: flex; flex-direction: column; }
+.editor-active .document-head { flex-shrink: 0; }
+.editor-active .toolbar { position: relative; top: auto; flex-shrink: 0; z-index: 20; }
+.editor-active .paper {
+  flex: 1; min-height: 0; width: calc(100% - 32px); margin: 16px auto;
+  overflow: auto; overscroll-behavior-y: contain; -webkit-overflow-scrolling: touch;
+  scroll-padding-block: 20px;
+}
+.editor-active .rich-editor { min-height: 100%; }
+.editor-active .editor-footer { flex-shrink: 0; width: 100%; padding: 0 16px 12px; }
+.editor-active .settings-panel { position: relative; top: auto; max-height: 100%; }
+.toolbar .tool-btn[aria-pressed="true"] { background: var(--mint); color: var(--green); box-shadow: inset 0 0 0 1px #93afa1; }
+/* A full inherited line of air, without inserting empty paragraphs into saved manuscripts. */
+.rich-editor blockquote, .prompter-text blockquote { margin-block: 1.7em; margin-block: 1lh; padding-block: 0.01px; }
+@media (max-width: 900px) {
+  .editor-active .editor-layout { display: flex; flex-direction: column; }
+  .editor-active .editor-workspace { flex: 1; }
+  .editor-active .settings-panel { flex-shrink: 0; position: relative; right: auto; top: auto; width: 100%; max-height: 35%; border-radius: 0; }
+  .editor-active .settings-panel:not(.open) { width: 100%; }
+  .editor-active .settings-panel:not(.open) .settings-toggle strong,
+  .editor-active .settings-panel:not(.open) .settings-toggle svg:last-child { display: block; }
+  .editor-active .settings-toggle { height: 44px; }
+}
+@media (pointer: coarse) {
+  .toolbar .tool-btn { min-width: 44px; height: 44px; }
+  .toolbar select { min-height: 44px; font-size: 16px; }
+}
+@media (max-width: 640px) {
+  .editor-active .paper { width: calc(100% - 16px); margin: 8px auto; }
+  .toolbar > * { flex-shrink: 0; }
+}
+.editor-compact > .topbar, .editor-compact .document-head, .editor-compact .editor-footer { display: none; }
+.editor-compact .toolbar { flex-wrap: nowrap; overflow-x: auto; justify-content: flex-start; }
+.editor-compact .toolbar > * { flex-shrink: 0; }
+.editor-compact .paper { margin-block: 6px; padding-block: 24px; }

@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Chrome macOS",
+    "status": "PASS"
+  },
+  {
+    "name": "WebKit macOS",
+    "status": "PASS"
+  },
+  {
+    "name": "WebKit iPad portrait",
+    "status": "PASS"
+  },
+  {
+    "name": "WebKit iPad landscape",
+    "status": "PASS"
+  },
+  {
+    "name": "Chrome narrow touch",
+    "status": "PASS"
+  }
+]
