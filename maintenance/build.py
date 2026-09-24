@@ -15,6 +15,9 @@ def replace(old, new):
     global s
     assert s.count(old) == 1, (old[:100], s.count(old))
     s = s.replace(old, new)
+# Reuse the existing iOS home-screen icon for every on-page brand mark.
+assert s.count('className:"brand-mark",children:"T"') == 3
+s = s.replace('className:"brand-mark",children:"T"', 'className:"brand-mark",children:f.jsx("img",{src:"/apple-touch-icon.png",alt:"",width:37,height:37,style:{display:"block",width:"100%",height:"100%",borderRadius:"inherit"}})')
 start = s.index('w=V.useRef(null),Kl=V.useRef(null);', s.index('function q0('))
 end = s.index('const Sl=async()=>', start)
 s = s[:start] + '''w=V.useRef(null),editorTools=useEditorTools(V,w,h.id);V.useEffect(()=>{E(h),X("saved"),w.current&&(w.current.innerHTML=Jn(h.content))},[h.id]);''' + s[end:]
